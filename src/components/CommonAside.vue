@@ -2,9 +2,10 @@
   <el-menu
     default-active="2"
     class="el-menu-vertical-demo"
-    background-color="#33eaf0"
+    background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
+    :collapse="isCollapse"
   >
     <el-submenu v-for="item in hasChildren" :key="item.path" :index="item.path">
       <template slot="title">
@@ -35,7 +36,7 @@ export default {
           path: '/',
           name: 'home',
           label: '首页',
-          icon: 'home'
+          icon: 's-home'
         },
         {
           path: '/video',
@@ -76,11 +77,14 @@ export default {
     },
     hasChildren() {
       return this.asideMenu.filter(item => item.children)
+    },
+    isCollapse() {
+      return this.$store.state.tab.isCollapse
     }
   },
   methods: {
     clickMenu(item) {
-    //   this.$router.push({ name: item.name })
+      this.$router.push({ name: item.name })
       this.$store.commit('selectMenu', item)
     }
   }
@@ -91,5 +95,9 @@ export default {
     .el-menu{
         height: 100%;
         border: none;
+    }
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+      width: 200px;
+      min-height: 400px;
     }
 </style>

@@ -33,8 +33,12 @@ export default {
     ...mapState({
       current: state => state.tab.currentMenu
     })
+  },
+  methods: {
+    collapseMenu() {
+      this.$store.commit('collapseMenu')
+    }
   }
-
 }
 </script>
 
@@ -64,12 +68,12 @@ export default {
 <style lang="scss">
     .el-breadcrumb__item {
         .el-breadcrumb__inner {
-            color: #666666;
-            font-weight: normal;
+          color: #666666;
+          font-weight: normal;
     }
     &:last-child {
         .el-breadcrumb__inner {
-        color: #ffffff;
+          color: #ffffff;
         }
     }
     }
