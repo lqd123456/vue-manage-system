@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import '@/assets/scss/reset.scss' // @相对路径 不加后缀 默认加载的是js 或者 vue文件
-import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import ElementUI from 'element-ui'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

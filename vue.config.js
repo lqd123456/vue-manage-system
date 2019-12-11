@@ -9,7 +9,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: `@import "@/assets/scss/_variable.scss"`
+        prependData: `@import "@/assets/scss/_variable.scss";` // 新版本使用prependData 旧版本使用date
       }
     }
   }

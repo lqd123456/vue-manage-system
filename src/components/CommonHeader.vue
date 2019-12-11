@@ -10,7 +10,7 @@
       </el-breadcrumb>
     </div>
     <div class="r-content">
-      <el-dropdown trigger="click" size="mini">
+      <el-dropdown trigger="hover" size="mini">
         <span class="el-dropdown-link"><img :src="userImg" class="user"></span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>

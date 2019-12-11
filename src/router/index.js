@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const router = new VueRouter({
-  routes: {
+export default new Router({
+  routes: [{
     path: '/',
     component: () => import('@/views/Main.vue'),
     children: [
@@ -34,7 +34,5 @@ const router = new VueRouter({
         component: () => import('@/views/Other/PageTwo.vue')
       }
     ]
-  }
+  }]
 })
-
-export default router

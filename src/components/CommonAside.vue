@@ -1,12 +1,18 @@
 <template>
+  <!-- default-active匹配index 中的值作为导航的选中 -->
   <el-menu
-    default-active="2"
+    :default-active="current.path"
     class="el-menu-vertical-demo"
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
     :collapse="isCollapse"
   >
+    <el-menu-item v-for="item in noChildren" :key="item.path" :index="item.path" @click="clickMenu(item)">
+      <i :class="'el-icon-' + item.icon" />
+      <span slot="title">{{ item.label }}</span>
+    </el-menu-item>
+
     <el-submenu v-for="item in hasChildren" :key="item.path" :index="item.path">
       <template slot="title">
         <i :class="'el-icon-' + item.icon" />
@@ -19,15 +25,11 @@
         </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
-
-    <el-menu-item v-for="item in noChildren" :key="item.path" :index="item.path" @click="clickMenu(item)">
-      <i :class="'el-icon-' + item.icon" />
-      <span slot="title">{{ item.label }}</span>
-    </el-menu-item>
   </el-menu>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -53,16 +55,17 @@ export default {
         {
           label: '其他',
           icon: 'user',
+          path: 'other',
           children: [
             {
-              path: '/page1',
-              name: 'page1',
+              path: '/one',
+              name: 'one',
               label: '页面1',
               icon: 'setting'
             },
             {
-              path: '/page2',
-              name: 'page2',
+              path: '/two',
+              name: 'two',
               label: '页面2',
               icon: 'setting'
             }
@@ -80,7 +83,10 @@ export default {
     },
     isCollapse() {
       return this.$store.state.tab.isCollapse
-    }
+    },
+    ...mapState({
+      current: state => state.tab.currentMenu
+    })
   },
   methods: {
     clickMenu(item) {

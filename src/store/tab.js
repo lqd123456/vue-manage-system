@@ -2,7 +2,9 @@ import Cookie from 'js-cookie'
 export default {
   state: {
     isCollapse: false,
-    currentMenu: null,
+    currentMenu: {
+      path: '/'
+    },
     menu: [],
     tabsList: [
       {
