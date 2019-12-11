@@ -3,7 +3,7 @@ export default {
   state: {
     isCollapse: false,
     currentMenu: {
-      path: '3'
+      path: '/'
     },
     menu: [],
     tabsList: [
