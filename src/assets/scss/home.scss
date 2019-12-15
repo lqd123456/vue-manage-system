@@ -1,0 +1,75 @@
+.home {
+    .user {
+      display: flex;
+      align-items: center;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-right: 40px;
+      }
+      &info {
+        .name {
+          font-size: 32px;
+          margin-bottom: 10px;
+        }
+        .access {
+          color: #999999;
+        }
+      }
+    }
+    .login-info {
+      p {
+        line-height: 28px;
+        font-size: 14px;
+        color: #999999;
+        span {
+          color: #666666;
+          margin-left: 60px;
+        }
+      }
+    }
+    .num {
+      display: flex; //采用flex 布局，将块级元素同一行显示
+      flex-wrap: wrap; // 使用元素的宽度，换行显示
+      justify-content: space-between; //两边对齐
+      .el-card {
+        width: 32%;
+        margin-bottom: 20px;
+      }
+      .icon {
+        font-size: 30px;
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        line-height: 80px;
+        color: #fff;
+      }
+      .detail {
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column; // 设置垂直方向
+        justify-content: center; // 垂直居中
+        .num {
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+        .txt {
+          font-size: 14px;
+          text-align: center;
+          color: #999999;
+        }
+      }
+    }
+    .graph {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      .el-card {
+        width: 48%;
+      }
+    }
+  }

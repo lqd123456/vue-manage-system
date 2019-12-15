@@ -8,6 +8,8 @@
     active-text-color="#ffd04b"
     :collapse="isCollapse"
   >
+    <h3 v-show="!isCollapse">淘宝后台管理系统</h3>
+    <h3 v-show="isCollapse">淘宝</h3>
     <el-menu-item v-for="item in noChildren" :key="item.path" :index="item.path" @click="clickMenu(item)">
       <i :class="'el-icon-' + item.icon" />
       <span slot="title">{{ item.label }}</span>
@@ -101,6 +103,11 @@ export default {
     .el-menu{
         height: 100%;
         border: none;
+        h3{
+          color: #ffffff;
+          text-align:center;
+          line-height: 48px;
+        }
     }
     .el-menu-vertical-demo:not(.el-menu--collapse) {
       width: 200px;
