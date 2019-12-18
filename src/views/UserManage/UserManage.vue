@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      operateType: 'add',
+      operateType: 'add', // 用户编辑或者新增
       isShow: false,
       tableData: [],
       tableLabel: [
@@ -59,7 +59,7 @@ export default {
         total: 30,
         loading: false
       },
-      operateForm: {
+      operateForm: { // 操作表单
         name: '',
         addr: '',
         age: '',

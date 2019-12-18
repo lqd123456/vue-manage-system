@@ -14,6 +14,7 @@
         <span class="el-dropdown-link"><img :src="userImg" class="user"></span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>
+          <!-- 组件没有提供有API 的时候，使用vue中的方法怎用native修饰 -->
           <el-dropdown-item @click.native="logOut">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -37,6 +38,11 @@ export default {
   methods: {
     collapseMenu() {
       this.$store.commit('collapseMenu')
+    },
+    logOut() {
+      this.$store.commit('clearToken')
+      this.$store.commit('clearMenu')
+      location.reload()
     }
   }
 }

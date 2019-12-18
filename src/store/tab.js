@@ -31,6 +31,8 @@ export default {
       }
       const menu = JSON.parse(Cookie.get('menu'))
       state.menu = menu
+
+      // 用户权限的菜单
       const currentMenu = [
         {
           path: '/',
@@ -39,6 +41,7 @@ export default {
         }
       ]
       console.log(menu)
+      // 动态路由生成
       menu.forEach(item => {
         if (item.children) {
           item.children = item.children.map(item => {

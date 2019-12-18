@@ -18,6 +18,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <!-- sync 数据双向绑定 -->
     <el-pagination class="pager" layout="prev, pager, next" :total="config.total" :current-page.sync="config.page" :page-size="20" @current-change="changePage" />
   </div>
 </template>

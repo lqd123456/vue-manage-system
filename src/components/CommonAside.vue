@@ -1,27 +1,25 @@
 <template>
-  <!-- default-active匹配index 中的值作为导航的选中 -->
   <el-menu
-    :default-active="current.path"
+    :collapse="isCollapse"
+    :default-active="$route.path"
     class="el-menu-vertical-demo"
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
-    :collapse="isCollapse"
   >
-    <h3 v-show="!isCollapse">淘宝后台管理系统</h3>
-    <h3 v-show="isCollapse">淘宝</h3>
+    <h3 v-show="isCollapse">小滴</h3>
+    <h3 v-show="!isCollapse">小滴课堂后台管理系统</h3>
     <el-menu-item v-for="item in noChildren" :key="item.path" :index="item.path" @click="clickMenu(item)">
       <i :class="'el-icon-' + item.icon" />
       <span slot="title">{{ item.label }}</span>
     </el-menu-item>
-
-    <el-submenu v-for="item in hasChildren" :key="item.path" :index="item.path">
+    <el-submenu v-for="(item, index) in hasChildren" :key="index" :index="item.label">
       <template slot="title">
         <i :class="'el-icon-' + item.icon" />
-        <span>{{ item.label }}</span>
+        <span slot="title">{{ item.label }}</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item v-for="subItem in item.children" :key="subItem.path" :index="subItem.path" @click="clickMenu(subItem)">
+        <el-menu-item v-for="(subItem, subIndex) in item.children" :key="subIndex" :index="subItem.path" @click="clickMenu(subItem)">
           <i :class="'el-icon-' + subItem.icon" />
           <span slot="title">{{ subItem.label }}</span>
         </el-menu-item>
@@ -31,7 +29,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -57,17 +54,16 @@ export default {
         {
           label: '其他',
           icon: 'user',
-          path: 'other',
           children: [
             {
-              path: '/one',
-              name: 'one',
+              path: '/page1',
+              name: 'page1',
               label: '页面1',
               icon: 'setting'
             },
             {
-              path: '/two',
-              name: 'two',
+              path: '/page2',
+              name: 'page2',
               label: '页面2',
               icon: 'setting'
             }
@@ -78,17 +74,17 @@ export default {
   },
   computed: {
     noChildren() {
-      return this.asideMenu.filter(item => !item.children)
+      return this.menu.filter(item => !item.children)
     },
     hasChildren() {
-      return this.asideMenu.filter(item => item.children)
+      return this.menu.filter(item => item.children)
     },
     isCollapse() {
       return this.$store.state.tab.isCollapse
     },
-    ...mapState({
-      current: state => state.tab.currentMenu
-    })
+    menu() {
+      return this.$store.state.tab.menu
+    }
   },
   methods: {
     clickMenu(item) {
@@ -100,17 +96,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .el-menu{
-        height: 100%;
-        border: none;
-        h3{
-          color: #ffffff;
-          text-align:center;
-          line-height: 48px;
-        }
-    }
-    .el-menu-vertical-demo:not(.el-menu--collapse) {
-      width: 200px;
-      min-height: 400px;
-    }
+.el-menu {
+  height: 100%;
+  border: none;
+  h3 {
+    color: #ffffff;
+    text-align: center;
+    line-height: 48px;
+  }
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
 </style>
