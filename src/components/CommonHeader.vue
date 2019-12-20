@@ -40,7 +40,7 @@ export default {
       this.$store.commit('collapseMenu')
     },
     logOut() {
-      this.$store.commit('clearToken')
+      this.$store.commit('clearToken') // 退出的时候清除token和菜单
       this.$store.commit('clearMenu')
       location.reload()
     }

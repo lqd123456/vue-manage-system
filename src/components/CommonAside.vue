@@ -7,8 +7,8 @@
     text-color="#fff"
     active-text-color="#ffd04b"
   >
-    <h3 v-show="isCollapse">小滴</h3>
-    <h3 v-show="!isCollapse">小滴课堂后台管理系统</h3>
+    <h3 v-show="isCollapse">淘宝</h3>
+    <h3 v-show="!isCollapse">淘宝后台管理系统</h3>
     <el-menu-item v-for="item in noChildren" :key="item.path" :index="item.path" @click="clickMenu(item)">
       <i :class="'el-icon-' + item.icon" />
       <span slot="title">{{ item.label }}</span>

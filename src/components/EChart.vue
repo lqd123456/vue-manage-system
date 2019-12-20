@@ -1,7 +1,5 @@
 <template>
-  <div ref="echart" style="height: 100%">
-    echart
-  </div>
+  <div ref="echart" style="height: 100%" />
 </template>
 
 <script>

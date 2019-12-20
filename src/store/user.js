@@ -8,7 +8,7 @@ export default {
       state.token = val
       Cookie.set('token', val)
     },
-    clearToken(state) {
+    clearToken(state) { // 退出的时候清除token信息
       state.token = ''
       Cookie.remove('token')
     },

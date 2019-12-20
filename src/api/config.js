@@ -16,7 +16,7 @@ service.interceptors.request.use(
   }
 )
 
-service.interceptors.response(
+service.interceptors.response.use(
   response => {
     const res = {}
     res.status = response.status

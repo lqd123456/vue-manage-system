@@ -29,6 +29,7 @@ export default {
       if (!Cookie.get('menu')) {
         return
       }
+      // 根据菜单生成路由
       const menu = JSON.parse(Cookie.get('menu'))
       state.menu = menu
 
@@ -55,7 +56,7 @@ export default {
         }
       })
       console.log(currentMenu, 'cur')
-      router.addRoutes(currentMenu)
+      router.addRoutes(currentMenu) // 添加到路由里面
     },
     selectMenu(state, val) {
       if (val.name !== 'home') {
@@ -75,7 +76,7 @@ export default {
         state.tabsList = tagList
       }
     },
-    closeTab(state, val) {
+    closeTab(state, val) { // 关闭标签
       const result = state.tabsList.findIndex(item => item.name === val.name)
       state.tabsList.splice(result, 1)
     },
